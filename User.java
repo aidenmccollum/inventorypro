@@ -12,15 +12,15 @@
 * - projects: ArrayList<Project>
 *
 * Methods:
-* +User(String id, String userName, String password): Constructor
-* +getID(): String
-* +setID(String employeeID): void
-* +getName(): String
-* +setName(String name): void
-* +getPassword(): String
-* +setPassword(String password): void
-* +findProjects(): ArrayList<Project>
-* +addProject(Project project): void
+* + <constructor>> User(String, String, String)
+* + getID(): String
+* + setID(String): void
+* + getName(): String
+* + setName(String): void
+* + getPassword(): String
+* + setPassword(String): void
+* + findProjects(): ArrayList<Project>
+* + addProject(Project): void
 ***********************************/
 
 

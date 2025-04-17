@@ -5,19 +5,18 @@
 * Purpose: A class to represent inventory items
 *
 * Attributes:
-* - itemID: int
+* - itemID: String
 * - locationName: String
 * - itemName: String
 * - unitCost: float
 * - quantity: int
 * - supplier: String
 * - status: String
-* - statusOptions: String[]
 *
 * Methods:
-* + Item(int id, String name, float cost, int numItems, String provider): Constructor
-* + getID(): int
-* + setID(int): void
+* + <<constructor>> Item(String, String, float, int, String, String, String)
+* + getID(): String
+* + setID(String): void
 * + getLocationName(): String
 * + setLocationName(String): void
 * + getItemName(): String
@@ -30,13 +29,14 @@
 * + setSupplier(String): void
 * + getStatus(): String
 * + setStatus(String): void
+* + toString(): String
 ***********************************/
 
 
 
 
-public class Item {
-    private int itemID = 0;
+abstract public class Item {
+    private String itemID = "";
     private String locationName = "";
     private String itemName = "";
     private float unitCost = 0;
@@ -44,22 +44,21 @@ public class Item {
     private String supplier = "";
     private String status = "";
 
-    private final static String[] statusOptions = {"Requested"};
-
-    public Item(int id, String name, float cost, int numItems, String provider) {
+    public Item(String id, String name, float cost, int numItems, String provider, String status, String location) {
         itemID = id;
         itemName = name;
         unitCost = cost;
         quantity = numItems;
         supplier = provider;
-        status = "Requested";
+        this.status = status;
+        locationName = location;
     }
 
-    public int getID() {
+    public String getID() {
         return itemID;
     }
 
-    public void setID(int id) {
+    public void setID(String id) {
         itemID = id;
     }
 
@@ -110,4 +109,17 @@ public class Item {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "  Item ID: " + itemID +
+               "\n  Name: " + itemName +
+               "\n  Location: " + locationName +
+               "\n  Unit Cost: $" + String.format("%.2f", unitCost) +
+               "\n  Quantity: " + quantity +
+               "\n  Supplier: " + supplier +
+               "\n  Status: " + status;
+    }
+
+
 };

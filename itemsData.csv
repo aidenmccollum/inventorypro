@@ -1,0 +1,3 @@
+ID,name,unitCost,quantity,supplier,status,location,salePrice/expenseType, buyer/lifetime,onsale
+p29174,Accord,28295.0,12,Honda,In Stock,Front Lot,32000.0,Aaron Burr,false
+p90695,CRV,29185.0,31,Honda,In Stock,Side Lot,30100.0,None,true

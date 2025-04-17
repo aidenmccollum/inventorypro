@@ -13,15 +13,17 @@
 * - items: ArrayList<Item>
 *
 * Methods:
-* + Project(String name, String descr, String id, ArrayList<Item> projectItems): Constructor
+* + <<constructor>> Project(String, String, String, ArrayList<Item>)
 * + getProjectName(): String
-* + setProjectName(String projectName): void
+* + setProjectName(String): void
 * + getProjectDescription(): String
-* + setProjectDescription(String projectDescription): void
+* + setProjectDescription(String): void
 * + getManager(): String
-* + assignManager(String managerID): void
+* + assignManager(String): void
 * + getItems(): ArrayList<Item>
-* + setItems(ArrayList<Item> items): void
+* + getItemString(): String
+* + setItems(ArrayList<Item>): void
+* + toString(): String
 ***********************************/
 
 
@@ -31,9 +33,9 @@ public class Project {
     private String projectName = "";
     private String projectDescription = "";
     private String managerID = "";
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<String> items = new ArrayList<>();
 
-    public Project(String name, String descr, String id, ArrayList<Item> projectItems){
+    public Project(String name, String descr, String id, ArrayList<String> projectItems){
         projectName = name;
         projectDescription = descr;
         managerID = id;
@@ -64,11 +66,33 @@ public class Project {
         this.managerID = managerID;
     }
 
-    public ArrayList<Item> getItems() {
+    public ArrayList<String> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
+    public String getItemString() {
+        String itemString = "";
+        for (String item : items) {
+            if (itemString.isEmpty()) {
+                itemString = item;
+            } else {
+                itemString += "," + item;
+            }
+            
+        }
+
+        return itemString;
+    }
+
+    public void setItems(ArrayList<String> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "   Project Name: " + projectName + 
+               "\n     Description: " + projectDescription + 
+               "\n     Manager ID: " + managerID + 
+               "\n     Item IDs: " + getItemString();
     }
 };

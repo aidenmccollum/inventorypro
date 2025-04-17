@@ -27,9 +27,9 @@ import java.util.ArrayList;
 public class Location {
 
     private String locationName = "";
-    private ArrayList<Item> storedItems = new ArrayList<>();
+    private ArrayList<String> storedItems = new ArrayList<>();
 
-    public Location(String name, ArrayList<Item> items) {
+    public Location(String name, ArrayList<String> items) {
         locationName = name;
         storedItems = items;
     }
@@ -42,24 +42,24 @@ public class Location {
         locationName = location;
     };
 
-    public void addItem(Item item) {
+    public void addItem(String item) {
         storedItems.add(item);
     };
 
-    public void removeItemByID(int id) {
+    public void removeItemByID(String id) {
         for (int index = 0; index < storedItems.size(); index++) {
-            Item item = storedItems.get(index);
-            if (item.getID() == id) {
+            String item = storedItems.get(index);
+            if (item.equalsIgnoreCase(id)) {
                 storedItems.remove(index);
             };
         }
     };
 
-    public ArrayList<Item> getStoredItems() {
+    public ArrayList<String> getStoredItems() {
         return storedItems;
     }
 
-    public void setStoredItems(ArrayList<Item> storedItems) {
+    public void setStoredItems(ArrayList<String> storedItems) {
         this.storedItems = storedItems;
     }
 

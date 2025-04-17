@@ -11,11 +11,13 @@
 * - users: ArrayList<User> 
 *
 * Methods:
-* +UserDatabase(): Constructor
-* +fetchUserFileData(): void 
-* +setUserFileData(): boolean
-* +login(String id, String pass): User
-* +signup(String id, String name, String pass): User
+* + <<constructor>> UserDatabase()
+* + fetchUserFileData(): void 
+* + setUserFileData(): boolean
+* + login(String, String): User
+* + signup(String, String, String): User
+* + validateUserID(String): boolean
+* + validateAccountCreation(String, String, String): String
 ***********************************/
 
 
@@ -76,10 +78,6 @@ public class UserDatabase {
         return true;
     }
 
-    // public User addUser(User user) {
-
-    // }
-
     public User login(String id, String pass) {
         for (User user: users) {
             if (user.getID().equalsIgnoreCase(id) && user.getPassword().equals(pass)) {
@@ -97,6 +95,44 @@ public class UserDatabase {
         setUserFileData();
 
         return  newUser;
+    }
+
+
+    public boolean validateUserID(String id) {
+        for (User user: users) {
+            if (user.getID().equalsIgnoreCase(id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public String validateAccountCreation(String id, String name, String password) {
+        // Check if ID already exists
+        if (validateUserID(id)) {
+            return "Error: Employee ID already exists";
+        }
+
+        // Check name length
+        if (name.length() <= 2) {
+            return "Error: Name must be longer than 2 characters";
+        }
+
+        // Check password length
+        if (password.length() < 6) {
+            return "Error: Password must be at least 6 characters";
+        }
+
+        // Check for special character and number
+        boolean hasSpecial = password.matches(".*[!@#$%^&*()].*");
+        boolean hasNumber = password.matches(".*\\d.*");
+
+        if (!hasSpecial || !hasNumber) {
+            return "Error: Password must contain at least one special character and one number";
+        }
+
+        return "valid";
     }
 
     
